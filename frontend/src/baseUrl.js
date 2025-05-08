@@ -1,3 +1,3 @@
-const baseUrl = "https://assignment-hdeqd3a3ebeca6et.uksouth-01.azurewebsites.net/";
+const baseUrl = "https://sminstagram-b2cre7d8c5edg9au.uksouth-01.azurewebsites.net";
 
 export default baseUrl;
