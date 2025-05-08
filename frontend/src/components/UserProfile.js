@@ -4,7 +4,7 @@ import "./Profile.css";
 import { useParams } from "react-router-dom";
 import { FaUserCheck, FaUserPlus, FaImage, FaVideo, FaPlay, FaHeart, FaComment, FaCalendarAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import config from "../config";
+import baseUrl from "../baseUrl";
 import { Link } from "react-router-dom";
 
 export default function UserProfile() {
@@ -25,7 +25,7 @@ export default function UserProfile() {
 
   // to follow user
   const followUser = (userId) => {
-    fetch(`${config.apiUrl}/follow`, {
+    fetch(`${baseUrl}follow`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export default function UserProfile() {
 
   // to unfollow user
   const unfollowUser = (userId) => {
-    fetch(`${config.apiUrl}/unfollow`, {
+    fetch(`${baseUrl}unfollow`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +133,7 @@ export default function UserProfile() {
     setGalleryLoading(true);
     setImageLoadCount(0);
     
-    fetch(`${config.apiUrl}/user/${userid}`, {
+    fetch(`${baseUrl}user/${userid}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

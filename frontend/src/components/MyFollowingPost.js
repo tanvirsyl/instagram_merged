@@ -3,7 +3,7 @@ import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import config from "../config";
+import baseUrl from "../baseUrl";
 
 export default function MyFolliwngPost() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export default function MyFolliwngPost() {
     }
 
     // Fetching all posts
-    fetch(`${config.apiUrl}/myfollwingpost`, {
+    fetch(`${baseUrl}myfollwingpost`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -47,7 +47,7 @@ export default function MyFolliwngPost() {
   };
 
   const likePost = (id) => {
-    fetch(`${config.apiUrl}/like`, {
+    fetch(`${baseUrl}like`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export default function MyFolliwngPost() {
       });
   };
   const unlikePost = (id) => {
-    fetch(`${config.apiUrl}/unlike`, {
+    fetch(`${baseUrl}unlike`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ export default function MyFolliwngPost() {
 
   // function to make comment
   const makeComment = (text, id) => {
-    fetch(`${config.apiUrl}/comment`, {
+    fetch(`${baseUrl}comment`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",

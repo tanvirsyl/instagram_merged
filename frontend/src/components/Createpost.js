@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Createpost.css";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
-import config from "../config";
+import baseUrl from "../baseUrl";
 import { FaImage, FaVideo, FaUpload } from 'react-icons/fa';
 
 export default function Createpost() {
@@ -34,7 +34,7 @@ export default function Createpost() {
     // saving post to mongodb
     if (mediaUrl) {
 
-      fetch(`${config.apiUrl}/createPost`, {
+      fetch(`${baseUrl}createPost`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

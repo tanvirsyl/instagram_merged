@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./ProfilePic.css";
 import { toast } from 'react-toastify';
-import config from "../config";
+import baseUrl from "../baseUrl";
 import { FaCamera, FaUpload, FaTrash } from 'react-icons/fa';
 
 export default function ProfilePic({ changeprofile }) {
@@ -53,7 +53,7 @@ export default function ProfilePic({ changeprofile }) {
     const loadingToast = toast.loading("Updating profile picture...");
     
     // saving post to mongodb
-    fetch(`${config.apiUrl}/uploadProfilePic`, {
+    fetch(`${baseUrl}uploadProfilePic`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -94,7 +94,7 @@ export default function ProfilePic({ changeprofile }) {
     // Show loading toast
     const loadingToast = toast.loading("Removing profile picture...");
     
-    fetch(`${config.apiUrl}/removeProfilePic`, {
+    fetch(`${baseUrl}removeProfilePic`, {
       method: "put",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),

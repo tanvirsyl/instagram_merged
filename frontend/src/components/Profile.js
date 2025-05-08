@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PostDetail from "./PostDetail";
 import "./Profile.css";
 import ProfilePic from "./ProfilePic";
-import config from "../config";
+import baseUrl from "../baseUrl";
 
 export default function Profie() {
   const picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png";
@@ -29,7 +29,7 @@ export default function Profie() {
 
   useEffect(() => {
     // Fetch user and posts data from API
-    fetch(`${config.apiUrl}/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
+    fetch(`${baseUrl}user/${JSON.parse(localStorage.getItem("user"))._id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

@@ -3,7 +3,7 @@ import "./SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { LoginContext } from "../context/LoginContext";
-import config from "../config";
+import baseUrl from "../baseUrl";
 
 export default function SignIn() {
   const { setUserLogin } = useContext(LoginContext);
@@ -28,7 +28,7 @@ export default function SignIn() {
     setLoading(true);  // Set loading state to true while sending request
 
     // Sending data to server
-    fetch(`${config.apiUrl}/signin`, {
+    fetch(`${baseUrl}signin`, {
       method: "post",
       headers: {
         "Content-Type": "application/json"

@@ -3,7 +3,7 @@ import "./PostDetail.css";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaHeart, FaRegHeart, FaComment, FaEllipsisH, FaTrash } from 'react-icons/fa';
-import config from "../config";
+import baseUrl from "../baseUrl";
 
 export default function PostDetail({ item, toggleDetails }) {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export default function PostDetail({ item, toggleDetails }) {
   const handleLike = () => {
     const endpoint = liked ? 'unlike' : 'like';
     
-    fetch(`${config.apiUrl}/${endpoint}`, {
+    fetch(`${baseUrl}${endpoint}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function PostDetail({ item, toggleDetails }) {
   const makeComment = () => {
     if (!comment.trim()) return;
     
-    fetch(`${config.apiUrl}/comment`, {
+    fetch(`${baseUrl}comment`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +74,7 @@ export default function PostDetail({ item, toggleDetails }) {
   // Remove post
   const removePost = (postId) => {
     if (window.confirm("Do you really want to delete this post?")) {
-      fetch(`${config.apiUrl}/deletePost/${postId}`, {
+      fetch(`${baseUrl}deletePost/${postId}`, {
         method: "delete",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),

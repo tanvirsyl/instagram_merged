@@ -3,7 +3,7 @@ import logo from "../img/logo.png";
 import "./SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import config from "../config";
+import baseUrl from "../baseUrl";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function SignUp() {
       return;
     }
 
-    fetch(`${config.apiUrl}/signup`, {
+    fetch(`${baseUrl}signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

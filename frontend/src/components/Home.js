@@ -3,7 +3,7 @@ import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import config from "../config";
+import baseUrl from "../baseUrl";
 import { FaHeart, FaRegHeart, FaComment, FaPlay, FaPause, FaVolumeMute, FaVolumeUp, FaExpand } from 'react-icons/fa';
 import { BiTachometer } from 'react-icons/bi';
 
@@ -47,7 +47,7 @@ export default function Home() {
   const fetchPosts = useCallback(async (pageNum = 1) => {
     try {
       setLoadingMore(pageNum > 1);
-      const response = await fetch(`${config.apiUrl}/allposts?page=${pageNum}&limit=5`, {
+      const response = await fetch(`${baseUrl}allposts?page=${pageNum}&limit=5`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
@@ -159,7 +159,7 @@ export default function Home() {
   };
 
   const likePost = (id) => {
-    fetch(`${config.apiUrl}/like`, {
+    fetch(`${baseUrl}like`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -183,7 +183,7 @@ export default function Home() {
       });
   };
   const unlikePost = (id) => {
-    fetch(`${config.apiUrl}/unlike`, {
+    fetch(`${baseUrl}unlike`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -209,7 +209,7 @@ export default function Home() {
 
   // function to make comment
   const makeComment = (text, id) => {
-    fetch(`${config.apiUrl}/comment`, {
+    fetch(`${baseUrl}comment`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
