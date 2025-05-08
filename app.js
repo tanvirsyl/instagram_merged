@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require('express');
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -24,6 +25,12 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => {
         console.log("Error connecting to MongoDB:", err);
     });
+
+// Production script 
+app.use(express.static("./client/build"));
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 // Start the server
 const PORT = process.env.PORT || 5000;

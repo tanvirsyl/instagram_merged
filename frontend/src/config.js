@@ -1,9 +1,7 @@
-// Central configuration file for the application
 const config = {
-    // API base URL
-    apiUrl: "http://localhost:5000",
+
+    apiUrl: "https://assignment-hdeqd3a3ebeca6et.uksouth-01.azurewebsites.net",
     
-    // Other configuration settings can be added here
 };
 
 export default config;
